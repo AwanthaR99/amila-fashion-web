@@ -1,0 +1,1 @@
+export default function TrendingSection() { return <div className="p-10 text-center">TRENDING ITEMS</div>; }
