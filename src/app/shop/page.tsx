@@ -38,7 +38,7 @@ function ShopContent() {
     color: "",
   });
 
-  // 1. Dynamic Banner Logic
+  //  Dynamic Banner Logic
   const getBannerInfo = () => {
     if (urlSearch) return { title: `Search: "${urlSearch}"`, image: "/shop-banner.jpg", subtitle: "Search Results" };
     
@@ -73,7 +73,7 @@ function ShopContent() {
 
   const banner = getBannerInfo();
 
-  // 2. URL Change Handler
+  //  URL Change Handler
   useEffect(() => {
     setFilters(prev => ({ ...prev, categories: [], subCategory: "", occasion: "" }));
 
@@ -89,7 +89,7 @@ function ShopContent() {
     }
   }, [urlCategory, urlSubCategory, urlOccasion]);
 
-  // 3. Data Fetching (UPDATED FOR STOCK ARRAY)
+  //  Data Fetching 
   useEffect(() => {
     const fetchProducts = async () => {
       
@@ -144,18 +144,18 @@ function ShopContent() {
       // Price Filter
       if (product.price > filters.maxPrice) return false;
 
-      // 👇 SIZE FILTER (New Stock Logic)
+      //  SIZE FILTER (New Stock Logic)
       if (filters.size) {
-        // Stock array එකේ අදාල Size එක තියෙනවද සහ Quantity > 0 ද බලනවා
+        
         const hasSize = Array.isArray(product.stock) && product.stock.some(
            (item: any) => item.size === filters.size && item.quantity > 0
         );
         if (!hasSize) return false;
       }
 
-      // 👇 COLOR FILTER (New Stock Logic)
+      //  COLOR FILTER (New Stock Logic)
       if (filters.color) {
-        // Stock array එකේ අදාල Color එක තියෙනවද සහ Quantity > 0 ද බලනවා
+        
         const hasColor = Array.isArray(product.stock) && product.stock.some(
            (item: any) => item.color === filters.color && item.quantity > 0
         );
