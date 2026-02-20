@@ -1,19 +1,21 @@
-export const user = {
+import { defineField, defineType } from 'sanity'
+
+export const user = defineType({
   name: 'user',
   title: 'User',
   type: 'document',
   fields: [
-    {
+    defineField({
       name: 'name',
       title: 'Name',
       type: 'string',
-    },
-    {
+    }),
+    defineField({
       name: 'email',
       title: 'Email',
       type: 'string',
-    },
-    {
+    }),
+    defineField({
       name: 'wishlist',
       title: 'Wishlist',
       type: 'array',
@@ -23,6 +25,6 @@ export const user = {
           to: [{ type: 'product' }], // link the product
         },
       ],
-    },
+    }),
   ],
-};
+})
