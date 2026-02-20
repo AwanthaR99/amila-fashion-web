@@ -1,0 +1,1 @@
+export default function HeroSection() { return <div className="p-20 bg-gray-200 text-center">HERO SECTION</div>; }

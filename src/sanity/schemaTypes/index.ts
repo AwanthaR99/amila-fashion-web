@@ -3,9 +3,11 @@ import { product } from './product'
 import { category } from './category'
 import { user } from './user'     
 import { coupon } from './coupon'
+import { review } from './review'
 
 
 export const schema: { types: SchemaTypeDefinition[] } = {
  
-  types: [category, product, user, coupon],
+  types: [category, product, user, coupon, review],
 }
+

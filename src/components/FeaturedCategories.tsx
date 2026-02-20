@@ -1,0 +1,1 @@
+export default function FeaturedCategories() { return <div className="p-10 text-center">CATEGORIES</div>; }
