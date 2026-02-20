@@ -17,7 +17,7 @@ interface CartContextType {
   addToCart: (item: CartItem) => void;
   removeFromCart: (id: string, size?: string, color?: string) => void;
   updateQuantity: (id: string, size: string, color: string, quantity: number) => void;
-  clearCart: () => void; // 👈 අලුතෙන් දැම්මා
+  clearCart: () => void; 
   totalItems: number;
   cartTotal: number;
   isCartOpen: boolean;
