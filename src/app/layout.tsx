@@ -1,13 +1,21 @@
-
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Navbar"; 
 import Providers from "@/components/Providers";
 import Footer from "@/components/Footer";
 import CartSidebar from "@/components/CartSidebar";
+import { CartProvider } from "@/context/CartContext"; 
 
-const inter = Inter({ subsets: ["latin"] });
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Amila Fashion Web",
@@ -21,12 +29,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <Providers>
-            <Navbar />
+          
+          <CartProvider>
+            
+            <Navbar /> 
             <CartSidebar />
-            <main>{children}</main>
+            
+            {children} 
+            
             <Footer />
+            
+          </CartProvider>
         </Providers>
       </body>
     </html>
