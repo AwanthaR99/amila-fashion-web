@@ -12,13 +12,12 @@ export interface CartItem {
   quantity: number;
 }
 
-
 interface CartContextType {
   items: CartItem[];
   addToCart: (item: CartItem) => void;
   removeFromCart: (id: string, size?: string, color?: string) => void;
   updateQuantity: (id: string, size: string, color: string, quantity: number) => void;
-  clearCart: () => void;
+  clearCart: () => void; 
   totalItems: number;
   cartTotal: number;
   isCartOpen: boolean;
@@ -78,14 +77,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
     );
   };
 
-  
+  // Function logic
   const clearCart = () => {
-    setItems([]); 
-    localStorage.removeItem("cart");
+    setItems([]); // Empty cart
+    localStorage.removeItem("cart"); // Delete from storage
   };
+
   const totalItems = items.reduce((total, item) => total + item.quantity, 0);
   const cartTotal = items.reduce((total, item) => total + item.price * item.quantity, 0);
-  
 
   return (
     <CartContext.Provider 
