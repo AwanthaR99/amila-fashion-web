@@ -1,22 +1,32 @@
 import HeroSection from "@/components/HeroSection";
 import FeaturedCategories from "@/components/FeaturedCategories";
 import TrendingSection from "@/components/TrendingSection";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <main className="bg-[#Fdfbf7] min-h-screen">
-      <Navbar />
       
       {/* 1. HERO SECTION */}
       <HeroSection />
 
-      
+      {/* 2. SCROLLING MARQUEE */}
       <div className="bg-black text-white py-3 overflow-hidden border-b border-white/10 relative z-20">
-        <div className="animate-marquee whitespace-nowrap flex gap-10">
-          {[...Array(10)].map((_, i) => (
+        
+        {/* CSS Animation එක කෙලින්ම මෙතනම දාමු */}
+        <style>{`
+          @keyframes custom-marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-marquee-custom {
+            animation: custom-marquee 20s linear infinite;
+          }
+        `}</style>
+
+        {/* මෙතන w-max සහ animate-marquee-custom අනිවාර්යයි */}
+        <div className="animate-marquee-custom whitespace-nowrap flex gap-10 w-max">
+          {[...Array(20)].map((_, i) => (
              <div key={i} className="flex items-center gap-10">
                 <span className="text-xs font-bold uppercase tracking-[0.3em]">New Arrivals In Store</span>
                 <span className="text-[10px] text-gray-500">♦</span>
@@ -30,7 +40,7 @@ export default function Home() {
       {/* 3. FEATURED CATEGORIES (අර අපි හදපු Men/Women කොටස්) */}
       <FeaturedCategories />
 
-      {/* 4. MID-PAGE PROMO BANNER (මෙන්න මේ කොටස තමයි වෙනස් කළේ) */}
+      {/* 4. MID-PAGE PROMO BANNER */}
       <section className="w-full bg-stone-900 py-24 text-center px-4 my-10 relative overflow-hidden">
          {/* Background Pattern (Optional) */}
          <div className="absolute inset-0 bg-[url('/hero-bg.jpg')] bg-cover opacity-10 mix-blend-overlay"></div>
@@ -55,7 +65,6 @@ export default function Home() {
       {/* 5. TRENDING PRODUCTS */}
       <TrendingSection />
 
-      
     </main>
   );
 }
